@@ -83,6 +83,9 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+
+import android.util.DisplayMetrics;
+
 @SuppressLint("SetJavaScriptEnabled")
 public class InAppBrowser extends CordovaPlugin {
 
@@ -1029,7 +1032,13 @@ public class InAppBrowser extends CordovaPlugin {
                 WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
                 lp.copyFrom(dialog.getWindow().getAttributes());
                 lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-                lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+
+                DisplayMetrics metrics = new DisplayMetrics();
+                cordova.getActivity().getDisplay().getMetrics(metrics);
+                lp.height = metrics.heightPixels;
+
+                //TO DO: Criar solução para o rotacionar da tela
+                //lp.height = WindowManager.LayoutParams.MATCH_PARENT;
 
                 if (dialog != null) {
                     dialog.setContentView(main);
