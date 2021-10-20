@@ -1035,11 +1035,11 @@ public class InAppBrowser extends CordovaPlugin {
 
                 DisplayMetrics metrics = new DisplayMetrics();
                 cordova.getActivity().getDisplay().getMetrics(metrics);
-                lp.height = metrics.heightPixels;
+                //lp.height = metrics.heightPixels;
 
                 //TO DO: Criar solução para o rotacionar da tela
-                //lp.height = WindowManager.LayoutParams.MATCH_PARENT;
-
+                lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+                lp.y = 100;
                 if (dialog != null) {
                     dialog.setContentView(main);
                     dialog.show();
